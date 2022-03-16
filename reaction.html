@@ -13,8 +13,8 @@
 
   <h2> Michael Condon reaction timer </h2>
 
-  <p> Your time: <p id="target"> </p> </p>
-  <p> Count: <p id="countdown"> </p> </p>
+  <p> Your time: <span id="target"> </span> </p>
+  <p> Count: <span id="countdown"> </span> </p>
 
   <button type="button" onclick="startTime()"> Start Timer </button>
   <button type="button" onlick="recordReact()"> React Now </button>
@@ -25,25 +25,28 @@
 
     function recordReact() {
       myTime = Date.now();
+      console.log(myTime)
     }
 
     function startTime() {
-      for(i=0; i<4; i++) {
+      myTime = Date.now();
+      for(let i=0; i<4; i++) {
         setTimeout(function() {
           document.getElementById('countdown').innerHTML = i
-        }, ((3-i)*3000))
+        }, (3-i)*1000)
+        console.log(i)
       }
-      setTimeout(function(arg) {arg }, 3000)
+      setTimeout(react, 3000)
     }
 
-    function arg () {
+    function react () {
       var buttonTime = Date.now();
-      if (myTime=undefined) {
-          document.getElementById("target").innerHTML = "Too Slow"
+      if (myTime != undefined) {
+        let elapse = parseInt(buttonTime - myTime);
+        document.getElementById("target").innerHTML =  elapse;
         }
       else {
-        var elapse = buttonTime - myTime;
-        document.getElementById("target").innerHTML = "Time was" + elapse;
+        document.getElementById("target").innerHTML = "Too Slow"
       }
     }
   </script>
