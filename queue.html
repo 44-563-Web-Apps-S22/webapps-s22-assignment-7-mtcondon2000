@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html> 
+	<head> 
+	<style>
+    .flex-container {
+      display: flex;  flex-direction:row;
+      background-color: red;
+  }
+
+.flex-container > div {  /*div children of the flex container*/
+  background-color: #f1f1f1; 
+  margin: 10px;  padding: 20px;  font-size: 30px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) { 
+	 .flex-container{
+		 flex-direction:column;
+		 background-color: green;
+	  }
+	}
+</style>
+<title> Queue </title>
+</head>
+
+<body>
+
+	<input type="text" id="txt">
+	<h2> Michael Condon builds a reversed queue </h2>
+
+		<div class="flex-container" id="target">
+		  <div class="queue">row item 1</div>   
+		  <div class="queue">row item 2</div>  
+		  <div class="queue">row item 3</div>  
+		</div>
+	
+	<p> Press the button to create an new element of type div and then add it to the container.
+		</p>
+		<button onclick="makeNewDiv()">Add value</button>
+	
+	
+</body>
+<script>
+	function makeNewDiv(){
+		/* make the div and its text */
+		let element = document.createElement("div")
+		inputText = document.getElementById("txt").value;
+		element.innerHTML = inputText
+		element.className = "queue"
+
+		/* add it to the container */
+		let container = document.getElementById('target')
+		container.insertBefore(element, container.firstChild)
+		
+	}
+</script>
+</html>	
